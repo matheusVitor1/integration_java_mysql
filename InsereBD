@@ -1,0 +1,44 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Projeto;
+
+import java.sql.*;
+
+/**
+ *
+ * @author Matheus Alves
+ */
+public class InsereBD {
+
+    public void insereProd(Connection con, double vp, String desc) {
+        try {
+            String sql = "INSERT INTO produto(id_produto, valor_produto, desc_produto)" + "VALUES(null,?,?)";
+            PreparedStatement pstm = con.prepareStatement(sql);
+
+            pstm.setDouble(1, vp);
+            pstm.setString(2, desc);
+            pstm.execute();
+
+        } catch (Exception e) {
+            System.out.println("Erro ao inserir!" + e);
+        }
+    }
+
+
+    public void insereCliente(Connection con, String nome, String cnpj, String end) {
+        try {
+            String sql = "INSERT INTO cliente(id_cliente, nome_cliente, cnpj_cliente, endereco_cliente)" + "VALUES(null,?,?,?)";
+            PreparedStatement pstm = con.prepareStatement(sql);
+
+            pstm.setString(1, nome);
+            pstm.setString(2, cnpj);
+            pstm.setString(3, end);
+            pstm.execute();
+
+        } catch (Exception e) {
+            System.out.println("Erro ao inserir!" + e);
+        }
+    }
+}
