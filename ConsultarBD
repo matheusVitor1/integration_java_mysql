@@ -1,0 +1,40 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Projeto;
+
+import java.sql.*;
+
+/**
+ *
+ * @author Matheus Alves
+ */
+public class ConsultarBD {
+
+    public void consultaProd(Connection con) {
+        try {
+            Statement stml = con.createStatement();
+            ResultSet rs = stml.executeQuery("select * from produto");
+            while (rs.next()) {
+                System.out.println("id_produto: " + rs.getInt(1) + " - valor_produto: " + rs.getDouble(2) + " - desc_produto " + rs.getString(3));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+
+    public void consultaCliente(Connection con) {
+        try {
+            Statement stml = con.createStatement();
+            ResultSet rs = stml.executeQuery("select * from cliente");
+            while (rs.next()) {
+                System.out.println("id_cliente: " + rs.getInt(1) + " - nome_cliente: " + rs.getString(2) + " - cnpj_cliente " + rs.getString(3) + " - endereco_cliente " + rs.getString(4));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+ }
