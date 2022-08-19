@@ -1,0 +1,19 @@
+create database vmr;
+use vmr;
+
+Create table produto(
+id_produto int(4) not null auto_increment,
+valor_produto double,
+desc_produto varchar(100),
+primary key(id_produto)
+);
+
+create table cliente(
+id_cliente int(4) not null auto_increment,
+nome_cliente varchar(30),
+cnpj_cliente varchar(30),
+endereco_cliente varchar (100),
+primary key(id_cliente)
+);
+
+
