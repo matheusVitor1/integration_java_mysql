@@ -1,0 +1,46 @@
+package Projeto;
+
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+
+public class Menu {
+
+    ConectarBD obj = new ConectarBD();
+    InsereBD ins = new InsereBD();
+    ConsultarBD cns = new ConsultarBD();
+    Connection conexao = obj.connectionMySql();
+
+    public void opt(int opt) {
+        switch (opt) {
+
+            case 1: //inserir produto
+
+                String vp = JOptionPane.showInputDialog("Digite o valor do Produto: ");
+                String desc = JOptionPane.showInputDialog("Digite a descrição do Produto: ");
+                double vp2 = Double.parseDouble(vp);
+
+                ins.insereProd(conexao, vp2, desc);
+
+                cns.consultaProd(conexao);
+
+                obj.closeConnectionMySql(conexao);
+                break;
+
+            case 2: // inserir cliente
+
+                String nome_cliente = JOptionPane.showInputDialog("Digite o nome do Cliente: ");
+                String cnpj_cliente = JOptionPane.showInputDialog("Digite o cnpj do Cliente: ");
+                String end_cliente = JOptionPane.showInputDialog("Digite o Endereço do Cliente: ");
+
+                ins.insereCliente(conexao, nome_cliente, cnpj_cliente, end_cliente);
+
+                cns.consultaCliente(conexao);
+
+                obj.closeConnectionMySql(conexao);
+                break;
+          
+        }
+
+    }
+
+}
