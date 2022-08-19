@@ -1,0 +1,24 @@
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+
+public class vmrApp {
+
+    public static void main(String[] args) {
+
+        ConectarBD obj = new ConectarBD();
+        InsereBD ins = new InsereBD();
+        ConsultarBD cns = new ConsultarBD();
+        Connection conexao = obj.connectionMySql();
+        Menu mn = new Menu();
+
+        JOptionPane.showMessageDialog(null, "1: Para inserir um produto "
+                + "\n 2:Para inserir um Cliente");
+        String option = JOptionPane.showInputDialog("Digite a opção desejada: ");
+        int opt1 = Integer.parseInt(option);
+        mn.opt(opt1);
+
+ 
+
+    }
+
+}
